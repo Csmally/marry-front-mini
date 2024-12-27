@@ -1,25 +1,40 @@
 export default defineAppConfig({
-  pages: ["pages/home/index", "pages/mine/index"],
+  pages: [
+    "pages/chatPage/index",
+    "pages/imagePage/index",
+    "pages/giftPage/index",
+  ],
   tabBar: {
     color: "#000000",
-    selectedColor: "#f987b2",
+    selectedColor: "#000000",
     backgroundColor: "#ffffff",
+    borderStyle: "white",
     list: [
       {
-        pagePath: "pages/home/index",
-        text: "首页",
+        pagePath: "pages/chatPage/index",
+        text: "弹幕",
+        iconPath: "assets/icons/chat.png",
+        selectedIconPath: "assets/icons/chat-fill.png",
       },
       {
-        pagePath: "pages/mine/index",
-        text: "我的",
+        pagePath: "pages/imagePage/index",
+        text: "图片",
+        iconPath: "assets/icons/image.png",
+        selectedIconPath: "assets/icons/image-fill.png",
+      },
+      {
+        pagePath: "pages/giftPage/index",
+        text: "礼物",
+        iconPath: "assets/icons/gift.png",
+        selectedIconPath: "assets/icons/gift-fill.png",
       },
     ],
   },
   window: {
     backgroundTextStyle: "light",
-    navigationBarBackgroundColor: "#fdb9d7",
+    navigationBarBackgroundColor: "#ffffff",
     navigationBarTitleText: "❤️CYXI❤️",
-    navigationBarTextStyle: "white",
+    navigationBarTextStyle: "black",
     backgroundColor: "#ffffff",
   },
 });
