@@ -4,7 +4,7 @@ import './index.scss'
 
 const GiftPage = () => {
   useLoad(() => {
-    console.log('Page loaded.')
+    console.log('9898-礼物Page loaded.')
   })
   return (
     <View className='pageContainer'>

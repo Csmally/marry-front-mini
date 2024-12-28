@@ -4,7 +4,7 @@ import './index.scss'
 
 const ImagePage = () => {
   useLoad(() => {
-    console.log('Page loaded.')
+    console.log('9898-图片Page loaded.')
   })
   return (
     <View className='pageContainer'>

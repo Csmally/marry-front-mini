@@ -1,5 +1,6 @@
 export default defineAppConfig({
   pages: [
+    "pages/loginPage/index",
     "pages/chatPage/index",
     "pages/imagePage/index",
     "pages/giftPage/index",

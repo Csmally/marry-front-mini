@@ -4,7 +4,7 @@ import './index.scss'
 
 const ChatPage = () => {
   useLoad(() => {
-    console.log('Page loaded.')
+    console.log('9898-弹幕Page loaded.')
   })
   return (
     <View className='pageContainer'>
