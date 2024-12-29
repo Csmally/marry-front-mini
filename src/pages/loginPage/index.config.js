@@ -1,5 +1,5 @@
 export default definePageConfig({
-  navigationBarTitleText: "登录",
+  navigationBarTitleText: "我们订婚啦",
   disableScroll: true,
   enableShareAppMessage: true,
   enableShareTimeline: true,
