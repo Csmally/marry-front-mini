@@ -1,13 +1,18 @@
 import { defineConfig } from '@tarojs/cli'
+import path from 'path'
 
 import devConfig from './dev'
 import prodConfig from './prod'
+
 
 // https://taro-docs.jd.com/docs/next/config#defineconfig-辅助函数
 export default defineConfig(async (merge, { command, mode }) => {
   const baseConfig = {
     projectName: 'marry-front-mini',
     date: '2024-12-26',
+    alias: {
+      '@/utils': path.resolve(__dirname, '..', 'src/utils'),
+    },
     designWidth: 750,
     deviceRatio: {
       640: 2.34 / 2,
