@@ -2,7 +2,6 @@
     "miniprogramRoot": "dist/",
     "projectname": "marry-front-mini",
     "description": "❤️CYXI❤️",
-    "appid": "wx74738609284195a1",
     "setting": {
         "urlCheck": true,
         "es6": false,
@@ -14,10 +13,11 @@
             "ignore": [],
             "disablePlugins": [],
             "outputPath": ""
-        }
+        },
+        "ignoreUploadUnusedFiles": true
     },
     "compileType": "miniprogram",
-    "libVersion": "3.7.3",
+    "libVersion": "3.7.2",
     "srcMiniprogramRoot": "dist/",
     "packOptions": {
         "ignore": [],
@@ -27,5 +27,6 @@
     "editorSetting": {
         "tabIndent": "insertSpaces",
         "tabSize": 4
-    }
+    },
+    "appid": "wx74738609284195a1"
 }
