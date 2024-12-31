@@ -1,9 +1,9 @@
-import { useCallback, useContext, useEffect, useRef } from 'react';
+import { useCallback, useContext } from 'react';
 import Taro from "@tarojs/taro";
 import { AppProvider } from '@/utils/ctxs';
 
 const useRequest = () => {
-    const { requestHeader, setRequestHeader } = useContext(AppProvider);
+    const { requestHeader = {}, setRequestHeader } = useContext(AppProvider);
     const request = useCallback((options) => {
         const { url = '', data = {}, method = 'GET', header = {} } = options;
         return new Promise((res) => {
@@ -11,7 +11,7 @@ const useRequest = () => {
                 url: `${process.env.TARO_APP_BASE_URL}${url}`,
                 data,
                 method,
-                header,
+                header: {...header, ...requestHeader},
                 success: (r) => {
                     const { data: resData = {} } = r;
                     const { toastCode = 0, message = '请求成功', code } = resData;
@@ -27,7 +27,7 @@ const useRequest = () => {
                     res(resData)
                 },
                 fail: () => {
-                    Taro.showToast({ title: '稍后再试' });
+                    Taro.showToast({ title: '稍后再试', icon: 'none' });
                     res({
                         code: -1,
                         data: {},
@@ -36,12 +36,8 @@ const useRequest = () => {
                 }
             })
         })
-    }, [setRequestHeader]);
-    const requestRef = useRef(request);
-    useEffect(() => {
-        requestRef.current = (options) => request({...options, header: requestHeader});
-    }, [request, requestHeader]);
-    return requestRef.current;
+    }, [requestHeader, setRequestHeader]);
+    return request;
 }
 
 export { useRequest };
