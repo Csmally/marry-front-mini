@@ -2,25 +2,26 @@ import { useCallback, useContext, useEffect, useState } from 'react';
 import { Button, Image, Input, View } from '@tarojs/components';
 import { AppProvider } from '@/utils/ctxs';
 import Taro, { useRouter } from '@tarojs/taro';
-import { useRequest } from '@/utils/hooks';
+import { useRequest, useUpload } from '@/utils/hooks';
 import './index.scss'
 
 const LoginPage = () => {
   const { from = 'init' } = useRouter().params;
-  const { requestHeader, userInfo, setRequestHeader } = useContext(AppProvider);
+  const { requestHeader, userInfo, setUserInfo, setRequestHeader } = useContext(AppProvider);
   const [showLoginUp, setShowLoginUp] = useState(false)
   const [avatar, setAvatar] = useState('https://www.onelight.ink/assets/images/emptyUser.jpeg');
   const [nickname, setNickname] = useState('');
   const [isUploadAvatar, setIsUploadAvatar] = useState(false);
   const [showCongratulations, setShowCongratulations] = useState(true);
   const request = useRequest();
+  const uploader = useUpload();
   useEffect(() => {
-    if (userInfo.openid) {
+    if (userInfo?.openid) {
       setAvatar(userInfo.avatar);
       setNickname(userInfo.nickname);
       setIsUploadAvatar(true);
     }
-  }, [userInfo.openid]);
+  }, [userInfo?.openid]);
   const toLogin = useCallback(() => {
     setShowCongratulations(false)
     setTimeout(() => {
@@ -34,9 +35,28 @@ const LoginPage = () => {
   const onInput = useCallback((e) => {
     setNickname(e.detail.value)
   }, [])
-  const login = useCallback(() => {
+  const login = useCallback(async () => {
     if (from === 'init') {
-      console.log('9898userInfo', { avatar, nickname, openid: requestHeader?.openid })
+      const { success, data } = await uploader({filePath: avatar, name: 'userAvatar'});
+      if (success) {
+        const { avatar: avatar1 } = data;
+        const { data: data1, success: success1 } = await request({
+          url: 'addUser',
+          method: 'POST',
+          data: {
+            avatar: avatar1,
+            nickname,
+            openid: requestHeader?.openid
+          },
+        });
+        if (success1) {
+          const { user } = data1;
+          setUserInfo(user);
+          Taro.switchTab({
+            url: "/pages/chatPage/index",
+          })
+        }
+      }
     } else {
       Taro.login({
         success: async (res) => {
@@ -45,14 +65,15 @@ const LoginPage = () => {
             const { openid, token } = data;
             // 全局状态管理存储requestHeader
             setRequestHeader({ openid, token });
+            Taro.showToast({ title: '感谢您的参加', icon: 'none' })
             Taro.switchTab({
-              url: "pages/chatPage/index",
+              url: "/pages/chatPage/index",
             })
           }
         }
       })
     }
-  }, [avatar, from, nickname, request, requestHeader?.openid, setRequestHeader])
+  }, [avatar, from, nickname, request, requestHeader?.openid, setRequestHeader, setUserInfo, uploader])
   return (
     <View className='pageContainer'>
       <View className='title' />
@@ -60,18 +81,18 @@ const LoginPage = () => {
       {
         showLoginUp ? (
           <View className='loginBar'>
-            {
-              nickname && isUploadAvatar ? (
-                <>
-                  <Image src={avatar} className='avatar' />
-                  <View className='hasNickname'>{nickname}</View>
-                </>
-              ) : (
+            { 
+              from === 'init' ? (
                 <>
                   <Button openType='chooseAvatar' plain style={{ border: 'none' }} onChooseAvatar={onChooseAvatar}>
                     <Image src={avatar} className='avatar' />
                   </Button>
                   <Input value={nickname} placeholder='请输入昵称' type='nickname' className='nickname' onInput={onInput} />
+                </>
+              ) : (
+                <>
+                  <Image src={avatar} className='avatar' />
+                  <View className='hasNickname'>{nickname}</View>
                 </>
               )
             }

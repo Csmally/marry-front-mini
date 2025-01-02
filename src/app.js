@@ -20,7 +20,7 @@ function App({ children }) {
             // 全局状态管理存储userInfo
             setUserInfo(user);
             Taro.switchTab({
-              url: "pages/chatPage/index",
+              url: "/pages/chatPage/index",
             })
           }
         }
@@ -30,6 +30,7 @@ function App({ children }) {
   const ctxValue = {
     userInfo,
     requestHeader,
+    setUserInfo,
     setRequestHeader,
   }
   // children 是将要会渲染的页面
