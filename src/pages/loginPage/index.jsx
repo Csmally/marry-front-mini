@@ -65,7 +65,6 @@ const LoginPage = () => {
             const { openid, token } = data;
             // 全局状态管理存储requestHeader
             setRequestHeader({ openid, token });
-            Taro.showToast({ title: '感谢您的参加', icon: 'none' })
             Taro.switchTab({
               url: "/pages/chatPage/index",
             })
