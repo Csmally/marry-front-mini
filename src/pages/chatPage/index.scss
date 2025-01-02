@@ -1,15 +1,8 @@
 .pageContainer {
+    padding: 20px;
     height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.storyImg {
     background-image: url('https://www.onelight.ink/assets/images/story2.png');
+    background-size: 400px 500px;
     background-repeat: no-repeat;
-    background-size: cover;
-    width: 400px;
-    height: 500px;
+    background-position: center center;
 }

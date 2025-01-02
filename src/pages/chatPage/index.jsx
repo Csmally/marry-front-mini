@@ -1,5 +1,6 @@
 import { View } from '@tarojs/components'
 import { useLoad } from '@tarojs/taro'
+import ChatContainer from './components/chatContainer/index'
 import './index.scss'
 
 const ChatPage = () => {
@@ -8,7 +9,7 @@ const ChatPage = () => {
   })
   return (
     <View className='pageContainer'>
-      <View className='storyImg' />
+      <ChatContainer />
     </View>
   )
 }
