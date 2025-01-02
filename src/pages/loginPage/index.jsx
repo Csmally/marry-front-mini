@@ -3,7 +3,7 @@ import { Button, Image, Input, View } from '@tarojs/components';
 import { AppProvider } from '@/utils/ctxs';
 import Taro, { useRouter } from '@tarojs/taro';
 import { useRequest, useUpload } from '@/utils/hooks';
-import './index.scss'
+import styles from './index.module.scss';
 
 const LoginPage = () => {
   const { from = 'init' } = useRouter().params;
@@ -74,39 +74,39 @@ const LoginPage = () => {
     }
   }, [avatar, from, nickname, request, requestHeader?.openid, setRequestHeader, setUserInfo, uploader])
   return (
-    <View className='pageContainer'>
-      <View className='title' />
-      <View className='name'>杨璇 & 成怡</View>
+    <View className={styles.pageContainer}>
+      <View className={styles.title} />
+      <View className={styles.name}>杨璇 & 成怡</View>
       {
         showLoginUp ? (
-          <View className='loginBar'>
+          <View className={styles.loginBar}>
             { 
               from === 'init' ? (
                 <>
                   <Button openType='chooseAvatar' plain style={{ border: 'none' }} onChooseAvatar={onChooseAvatar}>
-                    <Image src={avatar} className='avatar' />
+                    <Image src={avatar} className={styles.avatar} />
                   </Button>
-                  <Input value={nickname} placeholder='请输入昵称' type='nickname' className='nickname' onInput={onInput} />
+                  <Input value={nickname} placeholder='请输入昵称' type='nickname' className={styles.nickname} onInput={onInput} />
                 </>
               ) : (
                 <>
-                  <Image src={avatar} className='avatar' />
-                  <View className='hasNickname'>{nickname}</View>
+                  <Image src={avatar} className={styles.avatar} />
+                  <View className={styles.hasNickname}>{nickname}</View>
                 </>
               )
             }
             {
               nickname && isUploadAvatar && (
-                <View className='congratulations' onClick={login}>
+                <View className={styles.congratulations} onClick={login}>
                   送上祝福
                 </View>
               )
             }
           </View>
         ) : (
-        <View className='content' style={{ opacity: showCongratulations ? 1 : 0 }}>
-          <View className='storyImg' />
-          <View className='congratulations' onClick={toLogin}>
+        <View className={styles.content} style={{ opacity: showCongratulations ? 1 : 0 }}>
+          <View className={styles.storyImg} />
+          <View className={styles.congratulations} onClick={toLogin}>
               送上祝福
           </View>
         </View>

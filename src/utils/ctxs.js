@@ -2,4 +2,6 @@ import { createContext } from "react";
 
 const AppProvider = createContext({});
 
-export { AppProvider };
+const ChatProvider = createContext({});
+
+export { AppProvider, ChatProvider };

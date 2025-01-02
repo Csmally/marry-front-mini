@@ -1,16 +1,24 @@
-import { View } from '@tarojs/components'
-import { useLoad } from '@tarojs/taro'
-import ChatContainer from './components/chatContainer/index'
-import './index.scss'
+import { useState } from "react";
+import { View } from '@tarojs/components';
+import { ChatProvider } from "@/utils/ctxs";
+import ChatContainer from './components/chatContainer/index';
+import SendChat from "./components/sendChat";
+import styles from './index.module.scss';
+import initChats from './initChats';
 
 const ChatPage = () => {
-  useLoad(() => {
-    console.log('9898-弹幕Page loaded.')
-  })
+  const [chats, setChat] = useState(initChats);
+  const ctxValue = {
+    chats,
+    setChat,
+  };
   return (
-    <View className='pageContainer'>
-      <ChatContainer />
-    </View>
+    <ChatProvider.Provider value={ctxValue}>
+      <View className={styles.pageContainer}>
+        <ChatContainer />
+        <SendChat />
+      </View>
+    </ChatProvider.Provider>
   )
 }
 

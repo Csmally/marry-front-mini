@@ -1,22 +1,24 @@
+import { useCallback, useContext, useState } from "react";
 import { View } from "@tarojs/components";
-import { useState } from "react";
+import { ChatProvider } from "@/utils/ctxs";
 import ChatText from "./ChatText";
-import './index.scss';
+import styles from './index.module.scss';
 
 const ChatContainer = () => {
-    const [chats, setChats] = useState([
-        '永远幸福',
-        '永远开心',
-        '永远开心',
-        '长长久久',
-        '恭喜发财'
-    ])
+    const { chats } = useContext(ChatProvider);
+    const [show, setShow] = useState(true);
+    const changeShowStatus = useCallback(() => {
+        setShow(!show);
+    }, [show]);
     return (
-        <View className='container'>
-            <View className='title'>快速发送</View>
-            <View className='chatBox'>    
+        <View>
+            <View className={styles.titleBar}>
+                <View onClick={changeShowStatus}>{show ? '收起' : '展开'}</View>
+                <View className={show ? styles.showTitle : styles.hideTitle}>快速发送</View>
+            </View>
+            <View className={show ? styles.showChatBox : styles.hideChatBox}>    
                 {
-                    chats.map((chat, index) => <ChatText key={index} text={chat} />)
+                    chats.map((chat, index) => <ChatText key={index} chat={chat} />)
                 }
             </View>
         </View>

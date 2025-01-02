@@ -1,0 +1,62 @@
+.titleBar {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+.showTitle {
+    font-size: 38px;
+    color: #868686;
+    opacity: 0;
+    animation: fadeIn 2s ease-in-out forwards;
+}
+
+.hideTitle {
+    font-size: 38px;
+    color: #868686;
+    opacity: 1;
+    animation: fadeOut 2s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+}
+
+.showChatBox {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 18px;
+    opacity: 0;
+    animation: fadeIn 2s ease-in-out forwards;
+}
+.hideChatBox {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 18px;
+    opacity: 1;
+    animation: fadeOut 2s ease-in-out forwards;
+}
+
+.tag {
+    padding: 6px 18px;
+    border-radius: 6px;
+    color: #ffffff;
+    box-shadow: 10px 10px 5px 0px rgba(174, 174, 174, 0.35);
+}

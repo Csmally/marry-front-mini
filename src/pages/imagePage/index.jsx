@@ -1,14 +1,13 @@
 import { View } from '@tarojs/components'
 import { useLoad } from '@tarojs/taro'
-import './index.scss'
+import styles from './index.module.scss'
 
 const ImagePage = () => {
   useLoad(() => {
     console.log('9898-图片Page loaded.')
   })
   return (
-    <View className='pageContainer'>
-      <View className='storyImg' />
+    <View className={styles.pageContainer}>
     </View>
   )
 }

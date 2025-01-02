@@ -1,0 +1,19 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.chatInput {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #e5e5e5;
+    border-radius: 20px;
+}
+.placeholder {
+    color: #e3e3e3;
+}
+.chatSend {
+    width: 60px;
+    height: 60px;
+    margin-left: 20px;
+}
