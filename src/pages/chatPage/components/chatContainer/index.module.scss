@@ -9,31 +9,39 @@
     font-size: 38px;
     color: #868686;
     opacity: 0;
-    animation: fadeIn 2s ease-in-out forwards;
+    transform: scale(0);
+    transform-origin: top right;
+    animation: fadeIn 300ms ease-in-out forwards;
 }
 
 .hideTitle {
     font-size: 38px;
     color: #868686;
     opacity: 1;
-    animation: fadeOut 2s ease-in-out forwards;
+    transform: scale(1);
+    transform-origin: top right;
+    animation: fadeOut 300ms ease-in-out forwards;
 }
 
 @keyframes fadeIn {
     0% {
       opacity: 0;
+      transform: scale(0);
     }
     100% {
       opacity: 1;
+      transform: scale(1);
     }
 }
 
 @keyframes fadeOut {
     0% {
       opacity: 1;
+      transform: scale(1);
     }
     100% {
       opacity: 0;
+      transform: scale(0);
     }
 }
 
@@ -43,7 +51,9 @@
     flex-wrap: wrap;
     gap: 18px;
     opacity: 0;
-    animation: fadeIn 2s ease-in-out forwards;
+    transform: scale(0);
+    transform-origin: top right;
+    animation: fadeIn 300ms ease-in-out forwards;
 }
 .hideChatBox {
     display: flex;
@@ -51,7 +61,9 @@
     flex-wrap: wrap;
     gap: 18px;
     opacity: 1;
-    animation: fadeOut 2s ease-in-out forwards;
+    transform: scale(1);
+    transform-origin: top right;
+    animation: fadeOut 300ms ease-in-out forwards;
 }
 
 .tag {
@@ -59,4 +71,9 @@
     border-radius: 6px;
     color: #ffffff;
     box-shadow: 10px 10px 5px 0px rgba(174, 174, 174, 0.35);
+}
+
+.chatStatusIcon {
+  width: 60px;
+  height: 60px;
 }
