@@ -42,7 +42,7 @@ const SendChat = () => {
     return (
         <View className={styles.container}>
             <Input
-              placeholder='自定义发送'
+              placeholder='写下你的祝福并发送'
               className={styles.chatInput}
               type='text'
               confirmType='send'

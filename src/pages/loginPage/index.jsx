@@ -37,6 +37,20 @@ const LoginPage = () => {
   }, [])
   const login = useCallback(async () => {
     if (from === 'init') {
+      if (!isUploadAvatar) {
+        Taro.showToast({
+          title: '请选择头像',
+          icon: 'none'
+        });
+        return;
+      }
+      if (!nickname) {
+        Taro.showToast({
+          title: '请输入昵称',
+          icon: 'none'
+        });
+        return;
+      }
       const { success, data } = await uploader({filePath: avatar, name: 'userAvatar'});
       if (success) {
         const { avatar: avatar1 } = data;
@@ -72,7 +86,7 @@ const LoginPage = () => {
         }
       })
     }
-  }, [avatar, from, nickname, request, requestHeader?.openid, setRequestHeader, setUserInfo, uploader])
+  }, [avatar, from, isUploadAvatar, nickname, request, requestHeader?.openid, setRequestHeader, setUserInfo, uploader])
   return (
     <View className={styles.pageContainer}>
       <View className={styles.title} />
@@ -95,13 +109,9 @@ const LoginPage = () => {
                 </>
               )
             }
-            {
-              nickname && isUploadAvatar && (
-                <View className={styles.congratulations} onClick={login}>
-                  送上祝福
-                </View>
-              )
-            }
+            <View className={styles.congratulations} onClick={login}>
+              {(nickname && isUploadAvatar) ? '送上祝福' : '登记'}
+            </View>
           </View>
         ) : (
         <View className={styles.content} style={{ opacity: showCongratulations ? 1 : 0 }}>
