@@ -50,6 +50,7 @@ const SendChat = () => {
               cursorSpacing={12}
               onInput={onInput}
               value={inputValue}
+              onConfirm={sendChat}
             />
             <Image src='https://www.onelight.ink/assets/icons/chatSend.png' className={styles.chatSend} onClick={sendChat} />
         </View>
