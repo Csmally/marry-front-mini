@@ -51,7 +51,7 @@ const useUpload = () => {
   const { requestHeader = {}, setRequestHeader } = useContext(AppProvider);
   const uploader = useCallback(
     (options) => {
-      const { filePath, name = "files", header = {} } = options;
+      const { filePath, name = "files", header = {}, sseSend = false } = options;
       return new Promise((res) => {
         Taro.uploadFile({
           url: `${process.env.TARO_APP_BASE_URL}upload`,
@@ -59,6 +59,7 @@ const useUpload = () => {
           name,
           formData: {
             targetFolder: name,
+            sseSend,
           },
           header: {
             ...header,
