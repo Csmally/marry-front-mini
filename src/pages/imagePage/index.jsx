@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from "react";
+import { memo, useCallback, useRef, useState } from "react";
 import { Image, View } from "@tarojs/components";
 import Taro, { useDidHide, useDidShow, useLoad } from '@tarojs/taro';
 import { useRequest, useUpload } from '@/utils/hooks';
@@ -59,4 +59,4 @@ const ImagePage = () => {
   )
 }
 
-export default ImagePage
+export default memo(ImagePage);

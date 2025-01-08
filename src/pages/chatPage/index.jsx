@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { memo, useState } from "react";
 import { View } from '@tarojs/components';
 import { ChatProvider } from "@/utils/ctxs";
 import ChatContainer from './components/chatContainer/index';
@@ -22,4 +22,4 @@ const ChatPage = () => {
   )
 }
 
-export default ChatPage
+export default memo(ChatPage);

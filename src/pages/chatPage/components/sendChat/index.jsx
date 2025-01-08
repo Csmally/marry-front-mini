@@ -1,4 +1,4 @@
-import { useCallback, useState, useContext } from "react";
+import { useCallback, useState, useContext, memo } from "react";
 import { ChatProvider } from "@/utils/ctxs";
 import { Image, Input, View } from "@tarojs/components";
 import Taro from "@tarojs/taro";
@@ -57,4 +57,4 @@ const SendChat = () => {
     )
 };
 
-export default SendChat;
+export default memo(SendChat);

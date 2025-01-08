@@ -1,4 +1,4 @@
-import { useCallback, useContext, useEffect, useState } from "react";
+import { memo, useCallback, useContext, useEffect, useState } from "react";
 import { View, Image } from "@tarojs/components";
 import { ChatProvider } from "@/utils/ctxs";
 import ChatText from "./ChatText";
@@ -30,4 +30,4 @@ const ChatContainer = () => {
     )
 };
 
-export default ChatContainer;
+export default memo(ChatContainer);

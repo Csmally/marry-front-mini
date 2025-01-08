@@ -1,4 +1,4 @@
-import { useCallback, useContext, useEffect, useState } from 'react';
+import { memo, useCallback, useContext, useEffect, useState } from 'react';
 import { Button, Image, Input, View } from '@tarojs/components';
 import { AppProvider } from '@/utils/ctxs';
 import Taro, { useRouter } from '@tarojs/taro';
@@ -126,4 +126,4 @@ const LoginPage = () => {
   )
 }
 
-export default LoginPage
+export default memo(LoginPage);

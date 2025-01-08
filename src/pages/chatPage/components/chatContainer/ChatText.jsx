@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { memo, useCallback } from "react";
 import { View } from "@tarojs/components";
 import { useRequest } from '@/utils/hooks';
 import styles from './index.module.scss';
@@ -15,4 +15,4 @@ const ChatText = ({ chat }) => {
     return <View onClick={sendChat} className={styles.tag} style={{background: chat.bgColor}}>{chat.content}</View>
 };
 
-export default ChatText;
+export default memo(ChatText);
