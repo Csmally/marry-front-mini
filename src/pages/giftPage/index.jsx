@@ -7,7 +7,7 @@ const GiftPage = () => {
   const [show, setShow] = useState(false);
   return (
     <View className={styles.pageContainer}>
-      <GiftModal />
+      {show && <GiftModal setShow={setShow} />}
       <Image src='https://www.onelight.ink/assets/icons/gift.png' className={styles.searchGift} onClick={() => setShow(true)} />
     </View>
   )

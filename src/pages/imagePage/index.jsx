@@ -47,7 +47,7 @@ const ImagePage = () => {
       mediaType: ['image'],
       sizeType: ['compressed'],
       success: (res) => {
-        const filePath = res?.tempFiles?.[0]?.tempFilePath
+        const filePath = res?.tempFiles?.[0]?.tempFilePath;
         uploader({filePath, name: 'lovePhoto', sseSend: true});
       }
     })
