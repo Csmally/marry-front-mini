@@ -9,7 +9,7 @@ const ImagePage = () => {
   const timerRef = useRef(null);
   const isFirstLoadRef = useRef(true);
   const request = useRequest();
-  const [showSwitch, setShowSwitch] = useState(true);
+  const [showSwitch, setShowSwitch] = useState(false);
   // 请求配置
   const fetchConfigs = useCallback(async () => {
     const { success, data } = await request({ url: 'getConfigs' });
