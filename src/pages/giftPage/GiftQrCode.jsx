@@ -8,7 +8,7 @@ const GiftQrCode = () => {
     const { requestHeader = {} } = useContext(AppProvider);
     const [qrUrl, setQrUrl] = useState('');
     useEffect(() => {
-        const base64Str = QR.createQrCodeImg(`https://www.onelight.ink/marryPlatform/#/checkGift?openid=${requestHeader?.openid}`, 100);
+        const base64Str = QR.createQrCodeImg(requestHeader?.openid, 100);
         setQrUrl(base64Str);
     }, [requestHeader?.openid]);
     return (

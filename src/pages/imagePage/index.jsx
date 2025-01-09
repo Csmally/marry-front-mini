@@ -12,7 +12,7 @@ const ImagePage = () => {
   const [showSwitch, setShowSwitch] = useState(false);
   // 请求配置
   const fetchConfigs = useCallback(async () => {
-    const { success, data } = await request({ url: 'getConfigs' });
+    const { success, data } = await request({ url: 'getConfigs', hostType: 'config' });
     if (success) {
       const { uploadMediaSwitch } = data;
       if (showSwitch !== uploadMediaSwitch) {
