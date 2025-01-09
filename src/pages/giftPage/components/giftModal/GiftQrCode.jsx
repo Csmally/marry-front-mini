@@ -15,7 +15,7 @@ const GiftQrCode = () => {
         <View className={styles.giftContainer}>
             <View>{'๑>ᴗO๑'}</View>
             <View>恭囍恭囍</View>
-            {qrUrl && <Image src={qrUrl} style={{height:'30vw',width:'30vw',marginTop:'3vw'}} />}
+            {qrUrl && <Image src={qrUrl} className={styles.qrCode} />}
         </View>
     )
 }

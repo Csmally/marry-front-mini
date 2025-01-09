@@ -1,0 +1,43 @@
+.modalContainer {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background: rgba(51, 51, 51, 0.65);
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.contentContainer {
+    width: 50vw;
+    background: #ffffff;
+    border-radius: 30px;
+    overflow: hidden;
+    padding: 30px;
+}
+.scrollViewContainer {
+    min-height: 30vh;
+    max-height: 50vh;
+}
+.innerContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.userTag {
+    border-radius: 5px;
+    padding: 10px;
+    background: pink;
+    color: #ffffff;
+}
+.controlBar {
+    display: flex;
+    margin-top: 30px;
+}
+.controlBtn {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000000;
+}
