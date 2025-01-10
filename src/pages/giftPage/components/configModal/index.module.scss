@@ -30,14 +30,25 @@
     background: pink;
     color: #ffffff;
 }
+.userChoosedTag {
+    border-radius: 5px;
+    padding: 10px;
+    background: red;
+    color: #ffffff;
+}
 .controlBar {
     display: flex;
     margin-top: 30px;
-}
-.controlBtn {
-    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
     color: #000000;
+}
+.closeBar {
+    display: flex;
+    justify-content: flex-end;
+}
+.closeIcon {
+    width: 40px;
+    height: 40px;
 }

@@ -6,10 +6,10 @@ const useRequest = () => {
   const { requestHeader = {}, setRequestHeader } = useContext(AppProvider);
   const request = useCallback(
     (options) => {
-      const { url = "", data = {}, method = "GET", header = {}, hostType = 'business' } = options;
+      const { url = "", data = {}, method = "GET", header = {} } = options;
       return new Promise((res) => {
         Taro.request({
-          url: `${hostType === 'business' ? process.env.TARO_APP_BASE_URL : process.env.TARO_APP_CONFIG_URL}${url}`,
+          url: `${process.env.TARO_APP_BASE_URL}${url}`,
           data,
           method,
           header: {
